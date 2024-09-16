@@ -43,7 +43,7 @@ Desfio usando NodeJS:
 
 ## Stay in touch
 
-- Author - [Rodrigo Moritz](https://om/kammysliwiec](https://www.instagram.com/rodrigo_moritz/)
+- Author - [Rodrigo Moritz](https://www.instagram.com/rodrigo_moritz/)
 
 ## License
 
