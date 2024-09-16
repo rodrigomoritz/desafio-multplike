@@ -11,11 +11,17 @@ export class DataService {
   }
 
   findAll() {
+    console.log(this.data);
     return this.data;
   }
 
   findOne(id: number) {
+    console.log(`Service: ${id}`);
+
     const item = this.data.find((item) => item.id === id);
+
+    console.log(item);
+
     if (!item) {
       throw new NotFoundException(`Item with id ${id} not found`);
     }

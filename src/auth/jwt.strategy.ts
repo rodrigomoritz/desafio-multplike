@@ -8,7 +8,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: 'your-secret-key', // Certifique-se de usar a mesma chave que está no `auth.module.ts`
+      secretOrKey: 'multiplike', // Certifique-se de usar a mesma chave que está no `auth.module.ts`
     });
   }
 
