@@ -1,18 +1,47 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { DataService } from './data.service';
 
 @Controller('data')
 export class DataController {
-  private data = [];
+  constructor(private readonly dataService: DataService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createDataDto: any) {
-    const newItem = { id: this.data.length + 1, ...createDataDto };
-
-    this.data.push(newItem);
-
-    return newItem;
+    return this.dataService.create(createDataDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
-  findAll() {}
+  findAll() {
+    return this.dataService.findAll();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.dataService.findOne(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch(':id')
+  update(@Param('id') id: number, @Body() updateDataDto: any) {
+    return this.dataService.update(id, updateDataDto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.dataService.remove(id);
+  }
 }
